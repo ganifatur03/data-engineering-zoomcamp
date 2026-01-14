@@ -1,12 +1,10 @@
 import pandas as pd
 import sys
 
-mode = sys.argv[1]
+month = sys.argv[1]
 
-if mode == "web":
-    print("Process web data")
-elif mode == "youtube":
-    print("Process youtube data")
+df = pd.DataFrame({"Day": [1, 2], "Num_passengers": [3, 4]})
+df["Reservation Month"] = month
 
-df = pd.DataFrame({"A": [1, 2], "B": [3, 4]})
 print(df.head())
+df.to_parquet(f"output_month_{sys.argv[1]}.parquet")
